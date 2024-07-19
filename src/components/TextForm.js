@@ -56,27 +56,43 @@ export default function TextForm(props) {
   const capitalBTN = () => {
     let currentTextArr = text.split(/\s+/g);
     console.log(currentTextArr.length);
+    let arr = [];
     for(let i = 0; i < currentTextArr.length; i++) {
       let str = currentTextArr[i];
-      console.log(str);
-      // str[0] = str[0].toUpperCase();
-      // currentTextArr[i] = str;
+      let strN = str[0];
+      let strNn = strN.toUpperCase();
+      console.log(`${str} ${typeof(str)}`);
+      // console.log(str[0].toUpperCase());
+      console.log(strNn);
+      let nStr;
+      // if(str !== (/[ ]+/)) {
+        if(str.length === 1) {
+          nStr = strNn;
+        } else {
+          nStr = strNn + str.slice(1,str.length);
+        }
+      // }
+      
+      console.log(`${nStr} 2nd`);
+      arr.push(nStr);
+      currentTextArr[i] = nStr;
     }
-    const newText = currentTextArr.toString();
+    const newText = arr.join(" ");
     console.log(currentTextArr);
+    console.log(arr);
     console.log(newText);
-    // setText(currentTextArr);
+    setText(newText);
   }
-  let myStyle = {
-    color: 'white',
-    backgroundColor: 'black'
+  const myStyle = {
+    backgroundColor: props.mode === 'light' ? 'white' : 'black',
+    color: props.mode === 'light' ? 'black' : 'white'
   }
   return (
     <>
     <div className="container">
       <h1>{props.heading}</h1>
       <div className="my-3">
-        <textarea style={myStyle} className="form-control fs-4 text-secondary" value={text} onChange={handleOnChange} id="myBox" rows=""></textarea>
+        <textarea className="form-control fs-4 text-secondary" style={myStyle}  value={text} onChange={handleOnChange} id="myBox" rows=""></textarea>
       </div>
       <button className="btn btn-primary mx-2" onClick={handleOnClickU}>Convert to Upper Case</button>
       <button className="btn btn-primary mx-2" onClick={handleOnClickL}>Convert to Lower Case</button>
@@ -98,4 +114,3 @@ export default function TextForm(props) {
   )
 }
   
-

@@ -1,37 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function About(props) {
-  // let myStyle = {
-  //   color: 'white',
-  //   backgroundColor: 'black'
-  // }
-
-  const [mode, setMode] = useState("Dark");
-
-  const [myStyle, setMyStyle] = useState({
-    color: 'black',
-    backgroundColor: 'white'
-  });
-
-  const darkMode = () => {
-    if(myStyle.color === 'white') {
-      setMyStyle({
-        color: 'black',
-        backgroundColor: 'white'
-      });
-      setMode("Dark");
-    } else {
-      setMyStyle({
-        color: 'white',
-        backgroundColor: 'black'
-      });
-      setMode("Light");
-    }
-    
+  const myStyle = {
+    backgroundColor: props.mode === 'light' ? 'white' : 'black',
+    color: props.mode === 'light' ? 'black' : 'white'
   }
-
   return (
-    <div className="container my-4 w-50" style={myStyle}>
+    <div className="container my-4 w-50" >
       <h1>About Us</h1>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item">
@@ -72,7 +47,7 @@ export default function About(props) {
         </div>
       </div>
       <div className="container">
-        <button className="btn btn-primary my-2" onClick={darkMode}>{mode}</button>
+        {/* <button className="btn btn-primary my-2" onClick={darkMode}>{mode}</button> */}
       </div>
     </div>
   )
