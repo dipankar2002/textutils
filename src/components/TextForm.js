@@ -4,17 +4,21 @@ export default function TextForm(props) {
   const [text, setText] = useState("Enter text here");
   // const [previewText, setPreviewText] = useState("Preview text area");
   const handleOnClickU = () => {
-    setText(text.toUpperCase())
+    setText(text.toUpperCase());
+    props.showAlert("Uppercase done","primary");
   }
   const handleOnClickL = () => {
     setText(text.toLowerCase())
+    props.showAlert("Lowercase done","primary");
   }
   const clearTextBTN = () => {
     const newText = "";
     setText(newText);
+    props.showAlert("Clear Text done","primary");
   }
   const copyTextBTN = () => {
     navigator.clipboard.writeText(text);
+    props.showAlert("Text Copy done","primary");
   }
 
   const handleOnChange = (event) => {
@@ -52,6 +56,7 @@ export default function TextForm(props) {
     let currentText = text.replace(/\s+/g, ' ').trim();
     setText(currentText);
     // console.log(currentText);
+    props.showAlert("Space Clear done","primary");
   }
   const capitalBTN = () => {
     let currentTextArr = text.split(/\s+/g);
@@ -82,6 +87,7 @@ export default function TextForm(props) {
     console.log(arr);
     console.log(newText);
     setText(newText);
+    props.showAlert("First Char Capital done","primary");
   }
   const myStyle = {
     backgroundColor: props.mode === 'light' ? 'white' : 'black',
