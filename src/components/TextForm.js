@@ -5,16 +5,16 @@ export default function TextForm(props) {
   // const [previewText, setPreviewText] = useState("Preview text area");
   const handleOnClickU = () => {
     setText(text.toUpperCase());
-    props.showAlert("Uppercase done","primary");
+    // props.showAlert("Uppercase done","primary");
   }
   const handleOnClickL = () => {
     setText(text.toLowerCase())
-    props.showAlert("Lowercase done","primary");
+    // props.showAlert("Lowercase done","primary");
   }
   const clearTextBTN = () => {
     const newText = "";
     setText(newText);
-    props.showAlert("Clear Text done","primary");
+    // props.showAlert("Clear Text done","primary");
   }
   const copyTextBTN = () => {
     navigator.clipboard.writeText(text);
@@ -56,7 +56,7 @@ export default function TextForm(props) {
     let currentText = text.replace(/\s+/g, ' ').trim();
     setText(currentText);
     // console.log(currentText);
-    props.showAlert("Space Clear done","primary");
+    // props.showAlert("Space Clear done","primary");
   }
   const capitalBTN = () => {
     let currentTextArr = text.split(/\s+/g);
@@ -87,7 +87,7 @@ export default function TextForm(props) {
     console.log(arr);
     console.log(newText);
     setText(newText);
-    props.showAlert("First Char Capital done","primary");
+    // props.showAlert("First Char Capital done","primary");
   }
   const myStyle = {
     backgroundColor: props.mode === 'light' ? 'white' : 'black',
@@ -100,12 +100,12 @@ export default function TextForm(props) {
       <div className="my-3">
         <textarea className="form-control fs-4 text-secondary" style={myStyle}  value={text} onChange={handleOnChange} id="myBox" rows=""></textarea>
       </div>
-      <button className="btn btn-primary mx-2" onClick={handleOnClickU}>Convert to Upper Case</button>
-      <button className="btn btn-primary mx-2" onClick={handleOnClickL}>Convert to Lower Case</button>
-      <button className="btn btn-primary mx-2" onClick={clearTextBTN}>Clear Text</button>
-      <button className="btn btn-primary mx-2" onClick={copyTextBTN}>Copy Text</button>
-      <button className="btn btn-primary mx-2" onClick={clearSpaceBTN}>Clear Space</button>
-      <button className="btn btn-primary mx-2" onClick={capitalBTN}>capital</button>
+      <button className={`btn btn-${props.themeColor} mx-2`} onClick={handleOnClickU}>Convert to Upper Case</button>
+      <button className={`btn btn-${props.themeColor} mx-2`} onClick={handleOnClickL}>Convert to Lower Case</button>
+      <button className={`btn btn-${props.themeColor} mx-2`} onClick={clearTextBTN}>Clear Text</button>
+      <button className={`btn btn-${props.themeColor} mx-2`} onClick={copyTextBTN}>Copy Text</button>
+      <button className={`btn btn-${props.themeColor} mx-2`} onClick={clearSpaceBTN}>Clear Space</button>
+      <button className={`btn btn-${props.themeColor} mx-2`} onClick={capitalBTN}>capital</button>
     </div>
     <div className="container">
       <h1>Summary</h1>

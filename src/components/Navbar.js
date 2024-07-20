@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 
 
@@ -20,7 +20,18 @@ export default function Navbar(props) {
               <a className="nav-link" href="/">{props.aboutTitle}</a>
             </li>
           </ul>
-          <button className="btn btn-primary my-2" onClick={props.toggleMode} toggleBtn={null}>{props.btnText}</button>
+          <li className="nav-item flex mx-3">
+            <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Theme</a>
+            <ul className={`dropdown-menu flex justify-content-end bg-${props.mode}`}>
+              <li className="container d-flex ">
+                <button onClick={props.setRed} className={`btn btn-sm btn-outline-danger text-right mx-2`}>Red</button>
+                <button onClick={props.setBlue} className="btn btn-sm btn-outline-primary text-right mx-2">Blue</button>
+                <button onClick={props.setYellow} className="btn btn-sm btn-outline-warning text-right mx-2">Yellow</button>
+                <button onClick={props.setGreen} className="btn btn-sm btn-outline-success text-right mx-2">Green</button>
+              </li>
+            </ul>
+          </li>
+          <button className={`btn btn-${props.themeColor} my-2`} onClick={props.toggleMode}>{props.btnText}</button>
         </div>
       </div>
     </nav>

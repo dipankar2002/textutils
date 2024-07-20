@@ -10,6 +10,7 @@ function App() {
   const [mode, setMode] = useState('light');
   const [btnText, setBtnText] = useState('Dark');
   const [alert, setAlert] = useState(null);
+  const [modeBtn, setModeBtn] = useState('primary');
   const showAlert = (message,type) => {
     setAlert({
       mes: message,
@@ -17,7 +18,7 @@ function App() {
     });
     setTimeout(() => {
       setAlert(null)
-    },1.5*1000);
+    },0.5*1000);
   }
   const toggleMode = () => {
     if(mode === 'light') {
@@ -34,12 +35,33 @@ function App() {
       showAlert("Light mode Eneble","success");
     }
   }
+  const setRedFnc = () => {
+    if(modeBtn !== 'danger') {
+      setModeBtn('danger');
+    }
+  }
+  const setBlueFnc = () => {
+    if(modeBtn !== 'primary') {
+      setModeBtn('primary');
+    }
+  }
+  const setYellowFnc = () => {
+    if(modeBtn !== 'warning') {
+      setModeBtn('warning');
+    }
+  }
+  const setGreenFnc = () => {
+    if(modeBtn !== 'success') {
+      setModeBtn('success');
+    }
+  }
   return (
     <div>
-      <Navbar title="TextUtilS" aboutTitle="About Text" mode={mode} toggleMode={toggleMode} btnText={btnText}/>
+      <Navbar title="TextUtilS" aboutTitle="About Text" mode={mode} themeColor={modeBtn} toggleMode={toggleMode} btnText={btnText}
+      setRed={setRedFnc} setBlue={setBlueFnc} setYellow={setYellowFnc} setGreen={setGreenFnc}/>
       <Alert alert={alert}/>
       <div className="container my-2">
-        <TextForm heading="Enter Your Text" mode={mode} showAlert={showAlert}/>
+        <TextForm heading="Enter Your Text" mode={mode} showAlert={showAlert} themeColor={modeBtn}/>
         {<About mode={mode}/>}
       </div>
     </div>
