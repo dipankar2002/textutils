@@ -4,7 +4,12 @@ import About from './components/About';
 import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -56,15 +61,23 @@ function App() {
     }
   }
   return (
-    <div>
-      <Navbar title="TextUtilS" aboutTitle="About Text" mode={mode} themeColor={modeBtn} toggleMode={toggleMode} btnText={btnText}
-      setRed={setRedFnc} setBlue={setBlueFnc} setYellow={setYellowFnc} setGreen={setGreenFnc}/>
-      <Alert alert={alert}/>
-      <div className="container my-2">
-        <TextForm heading="Enter Your Text" mode={mode} showAlert={showAlert} themeColor={modeBtn}/>
-        {<About mode={mode}/>}
-      </div>
-    </div>
+    <>
+      <Router>
+        <Navbar title="TextUtilS" aboutTitle="About Text" mode={mode} themeColor={modeBtn} toggleMode={toggleMode} btnText={btnText}
+        setRed={setRedFnc} setBlue={setBlueFnc} setYellow={setYellowFnc} setGreen={setGreenFnc}/>
+        <Alert alert={alert}/>
+        <div className="container my-2">
+        <Routes>
+          <Route exact path="/about" element={<About mode={mode}/>}>
+          </Route>
+          <Route exact path="/" element={<TextForm heading="Enter Your Text" mode={mode} showAlert={showAlert} themeColor={modeBtn}/>}>
+          </Route>
+        </Routes>
+        {/* <TextForm heading="Enter Your Text" mode={mode} showAlert={showAlert} themeColor={modeBtn}/> */}
+        {/* <About mode={mode}/> */}
+        </div>
+      </Router>
+    </>
   );
 }
 

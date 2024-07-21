@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 export default function TextForm(props) {
-  const [text, setText] = useState("Enter text here");
+  const [text, setText] = useState('');
   // const [previewText, setPreviewText] = useState("Preview text area");
   const handleOnClickU = () => {
     setText(text.toUpperCase());
@@ -45,6 +45,9 @@ export default function TextForm(props) {
     //   }
     // }
     // console.log(count);
+    if(text === '') {
+      return 0;
+    }
     if(text[text.length-1] === ' ') {
       return text.split(" ").length-1;
     } else if(text[text.length-1] !== ' ') {
@@ -98,7 +101,7 @@ export default function TextForm(props) {
     <div className="container">
       <h1>{props.heading}</h1>
       <div className="my-3">
-        <textarea className="form-control fs-4 text-secondary" style={myStyle}  value={text} onChange={handleOnChange} id="myBox" rows=""></textarea>
+        <textarea className="form-control fs-4 text-secondary" style={myStyle}  value={text} onChange={handleOnChange} id="myBox" rows="6" placeholder='Enter Your Text'></textarea>
       </div>
       <button className={`btn btn-${props.themeColor} mx-2`} onClick={handleOnClickU}>Convert to Upper Case</button>
       <button className={`btn btn-${props.themeColor} mx-2`} onClick={handleOnClickL}>Convert to Lower Case</button>
