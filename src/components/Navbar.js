@@ -20,18 +20,18 @@ export default function Navbar(props) {
             <li className="nav-item">
               <Link className="nav-link" to="/about">{props.aboutTitle}</Link>
             </li>
+            <li className="nav-item flex mx-3">
+              <Link className="nav-link dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Theme</Link>
+              <ul className={`dropdown-menu flex justify-content-end bg-${props.mode}`}>
+                <li className="container d-flex">
+                  <button onClick={props.setRed} className={`btn btn-sm btn-outline-danger text-right mx-2`}>Red</button>
+                  <button onClick={props.setBlue} className="btn btn-sm btn-outline-primary text-right mx-2">Blue</button>
+                  <button onClick={props.setYellow} className="btn btn-sm btn-outline-warning text-right mx-2">Yellow</button>
+                  <button onClick={props.setGreen} className="btn btn-sm btn-outline-success text-right mx-2">Green</button>
+                </li>
+              </ul>
+            </li>
           </ul>
-          <li className="nav-item flex mx-3">
-            <Link className="nav-link dropdown-toggle" to="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Theme</Link>
-            <ul className={`dropdown-menu flex justify-content-end bg-${props.mode}`}>
-              <li className="container d-flex ">
-                <button onClick={props.setRed} className={`btn btn-sm btn-outline-danger text-right mx-2`}>Red</button>
-                <button onClick={props.setBlue} className="btn btn-sm btn-outline-primary text-right mx-2">Blue</button>
-                <button onClick={props.setYellow} className="btn btn-sm btn-outline-warning text-right mx-2">Yellow</button>
-                <button onClick={props.setGreen} className="btn btn-sm btn-outline-success text-right mx-2">Green</button>
-              </li>
-            </ul>
-          </li>
           <button className={`btn btn-${props.themeColor} my-2`} onClick={props.toggleMode}>{props.btnText}</button>
         </div>
       </div>

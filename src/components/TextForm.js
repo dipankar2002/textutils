@@ -103,18 +103,18 @@ export default function TextForm(props) {
       <div className="my-3">
         <textarea className="form-control fs-4 text-secondary" style={myStyle}  value={text} onChange={handleOnChange} id="myBox" rows="6" placeholder='Enter Your Text'></textarea>
       </div>
-      <button className={`btn btn-${props.themeColor} mx-2`} onClick={handleOnClickU}>Convert to Upper Case</button>
-      <button className={`btn btn-${props.themeColor} mx-2`} onClick={handleOnClickL}>Convert to Lower Case</button>
-      <button className={`btn btn-${props.themeColor} mx-2`} onClick={clearTextBTN}>Clear Text</button>
-      <button className={`btn btn-${props.themeColor} mx-2`} onClick={copyTextBTN}>Copy Text</button>
-      <button className={`btn btn-${props.themeColor} mx-2`} onClick={clearSpaceBTN}>Clear Space</button>
-      <button className={`btn btn-${props.themeColor} mx-2`} onClick={capitalBTN}>capital</button>
+      <button disabled={text.length===0} className={`btn btn-${props.themeColor} mx-2 my-2`} onClick={handleOnClickU}>Convert to Upper Case</button>
+      <button disabled={text.length===0} className={`btn btn-${props.themeColor} mx-2 my-2`} onClick={handleOnClickL}>Convert to Lower Case</button>
+      <button disabled={text.length===0} className={`btn btn-${props.themeColor} mx-2 my-2`} onClick={clearTextBTN}>Clear Text</button>
+      <button disabled={text.length===0} className={`btn btn-${props.themeColor} mx-2 my-2`} onClick={copyTextBTN}>Copy Text</button>
+      <button disabled={text.length===0} className={`btn btn-${props.themeColor} mx-2 my-2`} onClick={clearSpaceBTN}>Clear Space</button>
+      <button disabled={text.length===0} className={`btn btn-${props.themeColor} mx-2 my-2`} onClick={capitalBTN}>capital</button>
     </div>
     <div className="container">
       <h1>Summary</h1>
       <p>{textWord(text)} words and {textLength(text)} charecters</p>
       <h3>Preview</h3>
-      <p>{text.toLowerCase()}</p>
+      <p>{text.length===0?'Nothing to preview':text.toLowerCase()}</p>
       {/* <div className="my-3">
         <textarea className="form-control fs-4 text-secondary" value={previewText} onChange={handleOnChangePT} id="myBox" rows="1"></textarea>
       </div> */}
